@@ -1,0 +1,43 @@
+<app-panel-box>
+  <div panel-body>
+    <label class="control-label">Details</label>
+    <table class="table-bordered table">
+      <tr>
+        <td>Title</td>
+        <td>{{post.title}}</td>
+      </tr>
+      <tr>
+        <td>Created By</td>
+        <td>{{post.createdBy}}</td>
+      </tr>
+      <tr>
+        <td>Description</td>
+        <td>{{post.description}}</td>
+      </tr>
+    </table>
+
+    <label class="control-label">Comments</label>
+    <table class="table table-bordered">
+      <tr>
+        <td></td>
+        <td>Content</td>
+        <td>By</td>
+      </tr>
+      <tr *ngFor="let comment of post.comments; let index = index">
+        <td>{{index+1}}</td>
+        <td>{{comment.content}}</td>
+        <td>{{comment.author}}</td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <input type="text" placeholder="add comment here" name="content" [(ngModel)]="content" class="form-control">
+        </td>
+        <td>
+          <button class="btn btn-primary" (click)="addComment()">Add</button>
+        </td>
+      </tr>
+    </table>
+
+  </div>
+</app-panel-box>
+<button class="btn btn-primary" (click)="backToList()">Back to List</button>

@@ -1,0 +1,19 @@
+<app-panel-box>
+  <span panel-title>Create post</span>
+  <div panel-body>
+    <form [formGroup]="postForm">
+      <div class="form-group">
+        <label class="control-label">Title</label>
+        <input type="text" class="form-control" placeholder="post title" [(ngModel)]='title' formControlName="title" name="title">
+        <div *ngIf="!postForm.get('title').valid && postForm.get('title').touched">
+          <div class="alert alert-danger" *ngIf="postForm.get('title').errors.required">You must have a title</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Description</label>
+        <textarea name="description" formControlName="description" [(ngModel)]="description" class="form-control" rows="10" style="resize: none" placeholder="write your post description here..."></textarea>
+      </div>
+      <button class="btn btn-success" [disabled]="!postForm.valid" (click)="savePost()" type="button">Post</button>
+    </form>
+  </div>
+</app-panel-box>

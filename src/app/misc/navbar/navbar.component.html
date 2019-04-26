@@ -1,0 +1,17 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['home']" *ngIf="userStatus">Home</a></li>
+        <li routerLinkActive="active"><a [routerLink]="['create-post']" *ngIf="userStatus">Create Post</a></li>
+        <li routerLinkActive="active"><a [routerLink]="['list-posts']" *ngIf="userStatus">List Posts</a></li>
+        <li routerLinkActive="active"><a [routerLink]="['login']" *ngIf="!userStatus">Login</a></li>
+        <li routerLinkActive="active"><a [routerLink]="['registration']" *ngIf="!userStatus">Registration</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a *ngIf="userStatus" (click)="logout()">Logout</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

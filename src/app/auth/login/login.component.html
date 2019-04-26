@@ -1,0 +1,15 @@
+<app-panel-box>
+  <span panel-title>Login</span>
+  <div panel-body>
+    <form>
+      <div class="form-group">
+        <label for="exampleInputUsername">Username</label>
+        <input type="text" class="form-control" name="username" [(ngModel)]="auth.username"  id="exampleInputUsername" placeholder="Username">
+
+        <label for="exampleInputPassword">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password" name="password" [(ngModel)]="auth.password"  >
+      </div>
+      <button type="submit" class="btn btn-success" (click)="login()">Submit</button>
+    </form>
+  </div>
+</app-panel-box>

@@ -1,0 +1,67 @@
+<app-panel-box *ngFor='let post of posts; let postNumber = index'>
+  <div panel-title>
+    <a [routerLink]="['/list-posts', post._id]"><span>Title: {{post.title | uppercase}}</span></a>
+    <span style="float: right">Published By: {{post.createdBy | uppercase}}</span>
+  </div>
+
+  <div panel-body>
+
+    <div>
+      <div style="margin-bottom: 30px;">{{post.description}}</div>
+      <div>
+        <button class="btn btn-default" (click)="showComments[postNumber]=!showComments[postNumber]">Comments ({{post.comments.length}})</button>
+        <button class="btn btn-default" (click)="thumbsUp(postNumber); showUsers[postNumber]=!showUsers[postNumber]">
+          <span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;<span>({{post.users_liked_post.length}})</span>
+        </button>
+        <button class="btn btn-default" data-toggle="modal" [attr.data-target]="'#m' + post._id"><span class="glyphicon glyphicon-list"></span></button>
+        <button class="btn btn-default" (click)="delete(postNumber)"><span class="glyphicon glyphicon-trash"></span></button>
+        <button class="btn btn-default" (click)="edit(postNumber)"><span class="glyphicon glyphicon-edit"></span></button>
+      </div>
+    </div>
+
+    <div class="modal fade" [id]="'m'+post._id" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">User liked this post</h4>
+          </div>
+          <div class="modal-body">
+            <p style="margin: 15px">
+              <span style="font-weight: 600;">{{post.users_liked_post}}</span>
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    <div *ngIf="showComments[postNumber]">
+      <table class="table table-bordered" style="text-align: center">
+        <tr><td>Content</td><td>Author</td></tr>
+        <tr *ngFor="let comment of post.comments">
+          <td style="word-break: break-all">{{comment.content}}</td>
+          <td>{{comment.author}}</td>
+        </tr>
+        <tr>
+          <td>
+            <input type="text" class="form-control" placeholder="Please add your comments here..." [(ngModel)]="content[postNumber]" name="content">
+          </td>
+          <td>
+            <button class="btn btn-primary" (click)="addComment(postNumber)">Submit</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+</app-panel-box>
+
+
+

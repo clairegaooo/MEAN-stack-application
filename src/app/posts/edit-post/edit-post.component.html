@@ -1,0 +1,20 @@
+<app-panel-box>
+  <span panel-title>Edit the post</span>
+  <div panel-body>
+    <form [formGroup]="postForm">
+      <div class="form-group">
+        <label class="control-label">Title</label>
+        <input type="text" class="form-control" placeholder="post title" formControlName="title">
+        <div *ngIf="!postForm.get('title').valid && postForm.get('title').touched">
+          <div class="alert alert-danger" *ngIf="postForm.get('title').errors.required">You must have a title</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Description</label>
+        <textarea name="description" formControlName="description" class="form-control" rows="10" style="resize: none" placeholder="write your post description here..."></textarea>
+      </div>
+      <button class="btn btn-success" [disabled]="!postForm.valid" (click)="updatePost()" type="button">Post</button>
+      <button class="btn btn-success" style="float: right" [routerLink]="['/list-posts']">Give up</button>
+    </form>
+  </div>
+</app-panel-box>
