@@ -19,7 +19,6 @@ export class EditPostComponent implements OnInit {
   ngOnInit() {
     this._activeRoute.params.subscribe((data: any) => {
       this.currentPostId = data.post_id;
-      console.log(this.currentPostId);
     });
     this._postService.getPost();
     this._postService.$post.subscribe((data: any) => {
