@@ -37,7 +37,12 @@ export class ListPostsComponent implements OnInit, OnDestroy {
     this._postService.saveLikes(this.posts[index]._id); // 为什么无法直接send点赞数？
   }
   delete(index) {
-    this._postService.deletePost(this.posts[index]._id);
+    if (this.currentUser === this.posts[index].createdBy) {
+      this._postService.deletePost(this.posts[index]._id);
+    } else {
+      alert(`This post is created by ${this.posts[index].createdBy}, you have no rights to delete it!`);
+    }
+
   }
 
   addComment(index) {
