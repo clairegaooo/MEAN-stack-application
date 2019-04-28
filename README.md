@@ -3,7 +3,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.0.
 
 ## Install node_modules
-Run `install npm` to install dependencies and devDependencies the application need.
+Run `npm install` to install dependencies and devDependencies the application need.
 
 ## MongoDB
 
