@@ -15,7 +15,7 @@ http://www.codebind.com/mongodb/install-mongodb-mac-os-x/
 
 ## Connect Server with MongoDB
 
-Run `export mongodb_conn_str=mongodb://localhost:27017/dbname`
+Run `export mongodb_conn_str=mongodb://localhost:27017/clarie_collection`
 
 ## Start server
 
