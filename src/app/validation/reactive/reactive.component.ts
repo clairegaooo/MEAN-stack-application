@@ -13,9 +13,9 @@ export class ReactiveComponent implements OnInit {
   
   constructor(private _fb: FormBuilder, private _http: HttpClient, private _router: Router) {
     this.userForm = this._fb.group({
-      username: ['amber', [Validators.required, Validators.minLength(3)]],
-      password: ['123', [Validators.required, Validators.minLength(3)]],
-      email: ['amber@gmail.com', [Validators.required, Validators.pattern('[^ @]*@[^ @]*')]],
+      username: ['', [Validators.required, Validators.minLength(3)]],
+      password: ['', [Validators.required, Validators.minLength(3)]],
+      email: ['', [Validators.required, Validators.pattern('[^ @]*@[^ @]*')]],
       gender: ['', [Validators.required]]
     });
   }
