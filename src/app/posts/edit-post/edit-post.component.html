@@ -1,7 +1,7 @@
 <app-panel-box>
   <span panel-title>Edit the post</span>
   <div panel-body>
-    <form [formGroup]="postForm">
+    <form *ngIf = "postForm" [formGroup]="postForm">
       <div class="form-group">
         <label class="control-label">Title</label>
         <input type="text" class="form-control" placeholder="post title" formControlName="title">
